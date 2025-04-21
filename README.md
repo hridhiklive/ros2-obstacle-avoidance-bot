@@ -1,28 +1,56 @@
+# 🤖 ROS2 Obstacle Avoidance Bot
 
-Avoidance Bot (Work in Progress) #ROS2 Obstacle Avoidance Bot
-This project simulates a basic mobile robot that avoids obstacles using ROS 2 and Gazebo. It's designed to help me learn ROS2 node architecture, real-time sensor processing, and simulation using RViz and Gazebo.
-
-## Goals
-- Implement ROS2 nodes in Python
-- Subscribe to LaserScan data for obstacle detection
-- Publish velocity commands to `/cmd_vel` for navigation
-- Visualize behavior in RViz and Gazebo
-
-## Tools & Tech
-- ROS 2 Humble
-- Gazebo
-- RViz
-- Python 3.8
-- Linux
-
-## Status
-Work in Progress  
-Currently setting up robot URDF model and writing initial Python node.
+A ROS2-based mobile robot simulation that performs basic obstacle avoidance using LIDAR data in a Gazebo world. This project demonstrates a foundational robotics behavior using real-time sensor feedback and autonomous motion planning.
 
 ---
 
-**Created by Hridhik A D**  
-This project is part of my preparation for robotics internships
+## 🚀 Project Overview
+
+This bot reads `LaserScan` data from a simulated LIDAR sensor and makes movement decisions based on nearby obstacles. If an object is detected within a threshold distance, the bot stops and rotates to avoid collision. Otherwise, it continues forward.
+
+This is part of my learning journey in robotics and ROS2, and it showcases:
+- Real-time data processing
+- Sensor-based navigation
+- Launch file setup and robot control using Python
+
+---
+
+## 🛠️ Tech Stack
+
+- **ROS2 Humble** (rclpy)
+- **Gazebo Classic**
+- **Python 3**
+- **URDF/Xacro** for robot description
+- **RViz2** (optional) for visualization
+
+---
+
+## 📁 Project Structure
+
+ros2-obstacle-avoidance-bot/
+├── launch/
+│   └── obstacle_avoidance.launch.py        # ✅ Launches everything
+├── obstacle_avoidance/
+│   ├── __init__.py
+│   └── bot_controller.py                   # ✅ Main ROS2 Node
+├── urdf/
+│   └── bot.urdf.xacro                      # ✅ Basic robot model
+├── worlds/
+│   └── test_world.world                    # ✅ Basic Gazebo world
+├── media/
+│   └── demo.gif                            # (Add this later after sim)
+├── README.md                               # ✅ You already have
+├── package.xml                             # ✅ ROS2 metadata
+├── setup.py                                # ✅ Python ROS2 setup
+└── requirements.txt                        # Optional for non-ROS stuff
 
 
+---
 
+## 🎮 How to Run (Simulation)
+
+1. **Build the workspace:**
+
+```bash
+colcon build --packages-select obstacle_avoidance
+source install/setup.bash
